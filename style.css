@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(rgb(115, 115, 115), rgb(64, 64, 64));
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+.drum-pad {
+  display: inline-block;
+  background: rgb(44, 44, 44);
+  margin-top: 4rem;
+  padding: 1rem;
+  border-radius: 0.4rem;
+}
+
+.key-row {
+  display: flex;
+  /* width: 100%; */
+  flex-flow: row nowrap;
+}
+
+.key {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  padding: 3rem 3rem;
+  margin: 3px;
+  color: rgb(44, 44, 44);
+  background: rgb(195, 195, 195);
+  border-radius: 0.2rem;
+  transition: all 0.1s;
+}
+
+.key-pressed {
+  background: rgb(205, 231, 57);
+  /* border: 1px solid rgb(156, 231, 57); */
+  transform: scale(1.05);
+}
+
+.letter {
+  display: block;
+  margin: 0;
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.sound {
+  display: inline-block;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+}
+
+/* Add animation on key hit, etc */
