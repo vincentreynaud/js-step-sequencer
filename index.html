@@ -21,10 +21,10 @@
     <div class="sequencer">
       <div class="buttons">
         <!-- check class of button play -->
-        <button class="navigation-buttons fa fa-stop"></button>
-        <button class="navigation-buttons fa fa-play"></button>
+        <button id="stop" class="navigation-buttons fa fa-stop"></button>
+        <button id="play" class="navigation-buttons fa fa-play"></button>
         <button class="navigation-buttons fa fa-microphone"></button>
-        <button class="navigation-buttons fa fa-trash" onclick="clearSelectedPads()"></button>
+        <button id="trash" class="navigation-buttons fa fa-trash" onclick="clearSelectedPads()"></button>
 
         <!-- settings, bpm and other stuff -->
         <!-- here comes a bpm slider -->
@@ -61,7 +61,7 @@
 
             <span id="demo"></span>
 
-            <input type="range" min="60" max="200" value="60" class="slider" id="myRange">
+            <input type="range" min="60" max="200" value="120" class="slider" id="myRange">
           </div>
         </div>
 
@@ -98,20 +98,20 @@
 
         <!-- 1. line of pads -->
         <div id="step-1" class="pads-column">
-          <div class="pad pad-pressed"></div>
-          <div class="pad "></div>
-          <div class="pad pad-pressed"></div>
-          <div class="pad "></div>
-          <div class="pad "></div>
-          <div class="pad "></div>
-          <div class="pad "></div>
-          <div class="pad "></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
         <!-- 2. line of pads -->
         <div id="step-2" class="pads-column step-play">
           <div class="pad"></div>
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
@@ -122,7 +122,7 @@
 
         <!-- 3. line of pads -->
         <div id="step-3" class="pads-column">
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
@@ -135,7 +135,7 @@
         <!-- 4. line of pads-column -->
         <div id="step-4" class="pads-column">
           <div class="pad"></div>
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
@@ -146,7 +146,7 @@
 
         <!-- 5. line of pads-column -->
         <div id="step-5" class="pads-column">
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
@@ -159,10 +159,10 @@
         <!-- 6. line of pads-column -->
         <div id="step-6" class="pads-column">
           <div class="pad"></div>
-          <div class="pad pad-pressed"></div>
           <div class="pad"></div>
           <div class="pad"></div>
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
@@ -173,7 +173,7 @@
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
@@ -183,12 +183,12 @@
         <!-- 8. line of pads-column -->
         <div id="step-8" class="pads-column">
           <div class="pad"></div>
-          <div id="8-2" class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
           <div class="pad"></div>
-          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
           <div class="pad"></div>
         </div>
         <!-- END OF THE SEQUENCER -->
@@ -201,6 +201,7 @@
   <script src="javascript/sliderBPM.js"></script>
   <!-- JS Script for changing Classes by pressing -->
   <script src="javascript/changeClasses.js"></script>
+  <script src="js/sounds.js"></script>
 </body>
 
 </html>
