@@ -84,22 +84,67 @@ body {
   height: calc(600px / 10 - 10px);
   margin: 5px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  transition: background 100ms ease;
+  transition: #42424a 100ms ease;
 }
+
+/*
+.pads .pad-playing {
+  background: #56f584;
+}
+*/
+
+.pads .pads-player.pad-pressed {
+  background: #56f584;
+}
+
+.pads .pads-player.pad-pressed:hover {
+  background: #56f584;
+}
+
 .pads .pad:hover {
-  background: #42424a;
+  background: #787885;
 }
-.pads .pad.active {
-  background: #42424a;
+.pads .pads-player {
+  background: #787885;
 }
-.pads .pad.on {
-  background: #0087ff !important;
-  box-shadow: 0 0 12px 0 rgba(0, 135, 255, 0.8);
+.pads .pad-pressed {
+  background: #cbff8b;
+  box-shadow: 0 0 12px 0 rgba(203, 255, 139, 0.7);
+}
+
+/* new style for buttons and the options */
+.navigation-buttons {
+  margin: 5px;
+  outline: none;
+  background: #36364c;
+  color: white;
+  padding: 1em;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.navigation-buttons:hover,
+select:hover {
+  opacity: 0.9;
+  outline: none;
+  border-color: #56f584;
+  box-shadow: 0 0 10px #56f584;
+  color: #56f584;
+}
+
+.navigation-buttons:active {
+  color: white;
+  border-color: white;
+  box-shadow: 0 0 10px white;
 }
 
 @-webkit-keyframes colorize {
   from {
-    background: red;
+    background: #55aa00;
   }
   to {
     background: #55ff00;
@@ -108,7 +153,7 @@ body {
 
 @keyframes colorize {
   from {
-    background: red;
+    background: #55aa00;
   }
   to {
     background: #55ff00;
