@@ -21,48 +21,47 @@
     <div class="Sequencer">
       <div class="buttons">
         <!-- check class of button play -->
-        <button class="fa fa-pause"></button>
-        <button class="fa fa-play"></button>
-        <button class="fa fa-microphone"></button>
+        <button class="navigation-buttons fa fa-stop"></button>
+        <button class="navigation-buttons fa fa-play"></button>
+        <button class="navigation-buttons fa fa-microphone"></button>
 
         <!-- settings, bpm and other stuff -->
+        <!-- here comes a bpm slider -->
         <div class="select-wrapper">
           <span>Instrument</span>
-          <select data-label="wave" class="wave">
-            <option>Synth</option>
-            <option>Drums</option>
+          <select data-label="wave" class="wave navigation-buttons">
+            <option class="optionColor">Synth</option>
+            <option class="optionColor">Drums</option>
             <option>Orchestra</option>
           </select>
         </div>
 
         <div class="select-wrapper">
           <span>Octave</span>
-          <select data-label="octave" class="octave">
+          <select data-label="octave" class="octave navigation-buttons">
+            <option> 1</option>
             <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
+            <option> 3</option>
           </select>
         </div>
 
         <div class="select-wrapper">
-          <span>BPM</span>
-          <select data-label="octave" class="BPM">
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
+          <span>Style</span>
+          <select data-label="octave" class="BPM navigation-buttons">
+            <option>Legato</option>
+            <option>Staccato</option>
           </select>
         </div>
 
-        <div class="select-wrapper slidecontainer">
-          <p>BPM
-            <span id="demo"></span>
-          </p>
+        <div class="select-wrapper slide-container">
 
-          <input type="range" min="60" max="200" value="60" class="slider" id="myRange">
+          <br>
+          <div class="input-container">
+
+            <span id="demo"></span>
+
+            <input type="range" min="60" max="200" value="60" class="slider" id="myRange">
+          </div>
         </div>
 
         <!-- here comes the description of what the line is or sounds like -->
@@ -100,115 +99,109 @@
 
         <!-- 1. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad active on" onClick="javascript:changeBackground();"></div>
-          <div data-note="277.18" class="pad active "></div>
-          <div data-note="293.66" class="pad active "></div>
-          <div data-note="311.13" class="pad active "></div>
-          <div data-note="329.63" class="pad active "></div>
-          <div data-note="349.23" class="pad active "></div>
-          <div data-note="369.99" class="pad active "></div>
-          <div data-note="392.88" class="pad active "></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad "></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad "></div>
+          <div class="pad "></div>
+          <div class="pad "></div>
+          <div class="pad "></div>
+          <div class="pad "></div>
         </div>
 
         <!-- 2. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  on"></div>
-          <div data-note="277.18" class="pad  "></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392" class="pad  "></div>
+          <div class="pad  pads-player"></div>
+          <div class="pad  pads-player pad-pressed"></div>
+          <div class="pad  pads-player"></div>
+          <div class="pad  pads-player"></div>
+          <div class="pad  pads-player"></div>
+          <div class="pad  pads-player"></div>
+          <div class="pad  pads-player"></div>
+          <div class="pad  pads-player"></div>
         </div>
 
         <!-- 3. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  on"></div>
-          <div data-note="277.18" class="pad  "></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392.22" class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
         </div>
 
         <!-- 4. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  "></div>
-          <div data-note="277.18" class="pad  on"></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392" class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
         </div>
 
         <!-- 5. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  on"></div>
-          <div data-note="277.18" class="pad  "></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392" class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
         </div>
 
         <!-- 6. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  "></div>
-          <div data-note="277.18" class="pad  on"></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392" class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
         </div>
 
         <!-- 7. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  on"></div>
-          <div data-note="277.18" class="pad  "></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392" class="pad  "></div>
+          <div class="pad  on"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
         </div>
 
         <!-- 8. line of pads -->
         <div class="pads">
-          <div data-note="261.63" class="pad  on"></div>
-          <div data-note="277.18" class="pad  "></div>
-          <div data-note="293.66" class="pad  "></div>
-          <div data-note="311.13" class="pad  "></div>
-          <div data-note="329.63" class="pad  "></div>
-          <div data-note="349.23" class="pad  "></div>
-          <div data-note="369.99" class="pad  "></div>
-          <div data-note="392" class="pad  "></div>
+          <div class="pad  on"></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  "></div>
+          <div class="pad  pad-pressed"></div>
+          <div class="pad  "></div>
         </div>
-        <!-- END OF THE THE SEQUENCER -->
+        <!-- END OF THE SEQUENCER -->
 
       </div>
     </div>
   </div>
 
-  <!-- JS Script for showing the value of the BPM slider -->
-  <script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function () {
-      output.innerHTML = this.value;
-    }
-  </script>
+  <!-- JS Script for BPM slider -->
+  <script src="javascript/changeClasses.js"></script>
+  <!-- JS Script for changing Classes by pressing -->
+  <script src="javascript/changeClasses.js"></script>
 </body>
 
 </html>
