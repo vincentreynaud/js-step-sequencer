@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="drum-pad">
+
+      <div class="key-row">
+        <div class="key" data-key="81">
+          <p class="letter">Q</p>
+          <span class="sound">Shaker</span>
+        </div>
+        <div class="key" data-key="87">
+          <p class="letter">W</p>
+          <span class="sound">Clap</span>
+        </div>
+        <div class="key" data-key="69">
+          <p class="letter">E</p>
+          <span class="sound">Cymbal</span>
+        </div>
+      </div>
+
+      <div class="key-row">
+        <div class="key" data-key="65">
+          <p class="letter">A</p>
+          <span class="sound">Tom-hi</span>
+        </div>
+        <div class="key" data-key="83">
+          <p class="letter">S</p>
+          <span class="sound">Rim</span>
+        </div>
+        <div class="key" data-key="68">
+          <p class="letter">D</p>
+          <span class="sound">Tamb</span>
+        </div>
+      </div>
+
+      <div class="key-row">
+        <div class="key" data-key="90">
+          <p class="letter">Z</p>
+          <span class="sound">Kick</span>
+        </div>
+        <div class="key" data-key="88">
+          <p class="letter">X</p>
+          <span class="sound">Tom-low</span>
+        </div>
+        <div class="key" data-key="67">
+          <p class="letter">C</p>
+          <span class="sound">Snare</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <audio data-key="81" src="sounds/drum-kit-1/shaker.wav"></audio>
+  <audio data-key="87" src="sounds/drum-kit-1/clap.wav"></audio>
+  <audio data-key="69" src="sounds/drum-kit-1/cymbal.wav"></audio>
+  <audio data-key="65" src="sounds/drum-kit-1/tom-hi.wav"></audio>
+  <audio data-key="83" src="sounds/drum-kit-1/rim.wav"></audio>
+  <audio data-key="68" src="sounds/drum-kit-1/tamb.wav"></audio>
+  <audio data-key="90" src="sounds/drum-kit-1/kick.wav"></audio>
+  <audio data-key="88" src="sounds/drum-kit-1/tom-low.wav"></audio>
+  <audio data-key="67" src="sounds/drum-kit-1/snare.wav"></audio>
+
+
+  <script>
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+      // console.log(audio);
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play();
+      key.classList.add('key-pressed');
+    };
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+      // console.log(e.propertyName);
+      this.classList.remove('key-pressed')
+    };
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+  </script>
+
+</body>
+
+</html>
