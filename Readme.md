@@ -1,6 +1,6 @@
 # Extended JS Drum Kit
 
-Create a virtual Drum Set using HTML5, JavaScript and possibly the Web Audio API.
+Create a virtual Drum Set using HTML5, JavaScript the Web Audio API.
 
 ## Possible extended features
 
@@ -11,10 +11,11 @@ Create a virtual Drum Set using HTML5, JavaScript and possibly the Web Audio API
 - Mouse effects, using JavaScript event tracking
 - Touch effects for mobile devices
 
-## Inspiration & Resources
+## Resources
 
 ### Step Sequencer
 
+- http://highlinux.com/sequencer/
 - https://afuh.github.io/sequencer/
 - https://learningmusic.ableton.com/make-beats/make-beats.html
 - https://codepen.io/njmcode/pen/PwaXwB
