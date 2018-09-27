@@ -1,64 +1,116 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(rgb(115, 115, 115), rgb(64, 64, 64));
+  background: #1e1e21;
 }
 
-.container {
-  width: 100%;
-  text-align: center;
-}
-
-.drum-pad {
-  display: inline-block;
-  background: rgb(44, 44, 44);
-  margin-top: 4rem;
-  padding: 1rem;
-  border-radius: 0.4rem;
-}
-
-.key-row {
+.flex {
   display: flex;
-  /* width: 100%; */
-  flex-flow: row nowrap;
+  flex-direction: row;
 }
 
-.key {
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  padding: 3rem 3rem;
-  margin: 3px;
-  color: rgb(44, 44, 44);
-  background: rgb(195, 195, 195);
-  border-radius: 0.2rem;
-  transition: all 0.1s;
-}
-
-.key-pressed {
-  background: rgb(205, 231, 57);
-  /* border: 1px solid rgb(156, 231, 57); */
-  transform: scale(1.05);
-}
-
-.letter {
-  display: block;
-  margin: 0;
-  font-size: 3rem;
-  width: 3rem;
-  height: 3rem;
-}
-
-.sound {
-  display: inline-block;
+.Sequencer {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 1rem;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -55%);
+  transform: translate(-50%, -55%);
+  padding: 1em;
+  background: #28282c;
+  border-radius: 4px;
 }
 
-/* Add animation on key hit, etc */
+.notes {
+  list-style-type: none;
+  position: absolute;
+  left: -100px;
+  top: 75px;
+  text-align: right;
+  color: white;
+  line-height: 60px;
+  opacity: 0.3;
+}
+
+.buttons {
+  display: flex;
+  padding: 0.35em 0 0.5em;
+}
+.buttons button,
+.buttons select {
+  margin: 5px;
+  outline: none;
+  background: #36363c;
+  color: white;
+  padding: 1em;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.buttons button.active,
+.buttons select.active {
+  color: #0087ff;
+  border: 2px solid #0087ff;
+}
+.buttons .select-wrapper {
+  position: relative;
+}
+.buttons .select-wrapper span {
+  position: absolute;
+  color: white;
+  top: -10px;
+  left: 8px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0.3;
+}
+.buttons select {
+  position: relative;
+  height: 42px;
+  min-width: 50px;
+}
+
+.pads {
+  box-sizing: border-radius;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+}
+.pads .pad {
+  background: #36363c;
+  border-radius: 4px;
+  cursor: pointer;
+  width: calc(600px / 10 - 10px);
+  height: calc(600px / 10 - 10px);
+  margin: 5px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  transition: background 100ms ease;
+}
+.pads .pad:hover {
+  background: #42424a;
+}
+.pads .pad.active {
+  background: #42424a;
+}
+.pads .pad.on {
+  background: #0087ff !important;
+  box-shadow: 0 0 12px 0 rgba(0, 135, 255, 0.8);
+}
+
+@-webkit-keyframes colorize {
+  from {
+    background: red;
+  }
+  to {
+    background: #55ff00;
+  }
+}
+
+@keyframes colorize {
+  from {
+    background: red;
+  }
+  to {
+    background: #55ff00;
+  }
+}
