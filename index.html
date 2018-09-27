@@ -17,13 +17,14 @@
 
 <body>
 
-  <div id='sequencer'>
-    <div class="Sequencer">
+  <div id="sequencer">
+    <div class="sequencer">
       <div class="buttons">
         <!-- check class of button play -->
         <button class="navigation-buttons fa fa-stop"></button>
         <button class="navigation-buttons fa fa-play"></button>
         <button class="navigation-buttons fa fa-microphone"></button>
+        <button class="navigation-buttons fa fa-trash" onclick="clearSelectedPads()"></button>
 
         <!-- settings, bpm and other stuff -->
         <!-- here comes a bpm slider -->
@@ -79,8 +80,6 @@
 
       <!-- THE SEQUENCER -->
       <div class="flex">
-
-
         <!--  At the moment the pads have different classes.
               "pad" is the normal styling of the pad.
               This class is always on. Please don't delete it.
@@ -98,7 +97,7 @@
           -->
 
         <!-- 1. line of pads -->
-        <div class="pads">
+        <div id="step-1" class="pads-column">
           <div class="pad pad-pressed"></div>
           <div class="pad "></div>
           <div class="pad pad-pressed"></div>
@@ -110,87 +109,87 @@
         </div>
 
         <!-- 2. line of pads -->
-        <div class="pads">
-          <div class="pad  pads-player"></div>
-          <div class="pad  pads-player pad-pressed"></div>
-          <div class="pad  pads-player"></div>
-          <div class="pad  pads-player"></div>
-          <div class="pad  pads-player"></div>
-          <div class="pad  pads-player"></div>
-          <div class="pad  pads-player"></div>
-          <div class="pad  pads-player"></div>
+        <div id="step-2" class="pads-column step-play">
+          <div class="pad"></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
         <!-- 3. line of pads -->
-        <div class="pads">
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
+        <div class="pads-column">
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
-        <!-- 4. line of pads -->
-        <div class="pads">
-          <div class="pad  "></div>
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
+        <!-- 4. line of pads-column -->
+        <div class="pads-column">
+          <div class="pad"></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
-        <!-- 5. line of pads -->
-        <div class="pads">
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
+        <!-- 5. line of pads-column -->
+        <div class="pads-column">
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
-        <!-- 6. line of pads -->
-        <div class="pads">
-          <div class="pad  "></div>
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
+        <!-- 6. line of pads-column -->
+        <div class="pads-column">
+          <div class="pad"></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
-        <!-- 7. line of pads -->
-        <div class="pads">
-          <div class="pad  on"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
+        <!-- 7. line of pads-column -->
+        <div class="pads-column">
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
         </div>
 
-        <!-- 8. line of pads -->
-        <div class="pads">
-          <div class="pad  on"></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  "></div>
-          <div class="pad  pad-pressed"></div>
-          <div class="pad  "></div>
+        <!-- 8. line of pads-column -->
+        <div class="pads-column">
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad"></div>
+          <div class="pad pad-pressed"></div>
+          <div class="pad"></div>
         </div>
         <!-- END OF THE SEQUENCER -->
 
@@ -199,7 +198,7 @@
   </div>
 
   <!-- JS Script for BPM slider -->
-  <script src="javascript/changeClasses.js"></script>
+  <script src="javascript/sliderBPM.js"></script>
   <!-- JS Script for changing Classes by pressing -->
   <script src="javascript/changeClasses.js"></script>
 </body>

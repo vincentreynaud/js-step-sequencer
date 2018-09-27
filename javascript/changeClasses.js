@@ -6,3 +6,9 @@ everyPad.forEach(pad => {
       : pad.classList.add("pad-pressed");
   });
 });
+
+function clearSelectedPads() {
+  document.querySelectorAll(".pad-pressed").forEach(pad => {
+    pad.classList.remove("pad-pressed");
+  });
+}

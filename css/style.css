@@ -7,7 +7,7 @@ body {
   flex-direction: row;
 }
 
-.Sequencer {
+.sequencer {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,13 +70,14 @@ body {
   min-width: 50px;
 }
 
-.pads {
+.pads-column {
   box-sizing: border-radius;
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: wrap;
 }
-.pads .pad {
+
+.pad {
   background: #36363c;
   border-radius: 4px;
   cursor: pointer;
@@ -87,29 +88,37 @@ body {
   transition: #42424a 100ms ease;
 }
 
-/*
-.pads .pad-playing {
-  background: #56f584;
-}
-*/
 
-.pads .pads-player.pad-pressed {
-  background: #56f584;
-}
 
-.pads .pads-player.pad-pressed:hover {
-  background: #56f584;
-}
-
-.pads .pad:hover {
+.pads-column.step-play .pad {
   background: #787885;
 }
-.pads .pads-player {
+
+
+.pads-column.step-play .pad-pressed {
+  background: #56f584;
+}
+
+.pads-column.step-play .pad-pressed:hover {
+  background: #56f584;
+}
+
+.pads-column .pad:hover {
   background: #787885;
 }
-.pads .pad-pressed {
+
+.pads-column .pads-player {
+  background: #787885;
+}
+
+.pads-column .pad-pressed {
   background: #cbff8b;
   box-shadow: 0 0 12px 0 rgba(203, 255, 139, 0.7);
+}
+
+.pads-column .pad-pressed:hover {
+  background: #f2ffe2;
+  box-shadow: 0 0 12px 0 rgba(239, 255, 220, 0.7);
 }
 
 /* new style for buttons and the options */
