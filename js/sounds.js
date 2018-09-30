@@ -1,3 +1,6 @@
+
+
+
 let gmin = [195.995 , 220 , 233.082 , 261.626 , 293.665 , 311.127 , 349.228 , 391.995]
 
 let steps = [
@@ -30,6 +33,7 @@ let chord = [];
       chord[i].stop(sounds.currentTime + time);
     }
   }
+
 }
 
 function soundToggle(line , row){
@@ -38,6 +42,7 @@ function soundToggle(line , row){
   }else{
     steps[row][line] = true;
   }
+
 }
 
     function soundloop(time){
@@ -46,16 +51,17 @@ function soundToggle(line , row){
         return
       }
       play(steps[0] , time/8000);
-      stepPlayClasses(1);
-      setTimeout(function(){play(steps[1], stepPlayClasses(2) , time/8000)},time/8);
-      setTimeout(function(){play(steps[2], stepPlayClasses(3) , time/8000)},time * 2/8);
-      setTimeout(function(){play(steps[3], stepPlayClasses(4) , time/8000)},time * 3/8);
-      setTimeout(function(){play(steps[4], stepPlayClasses(5) , time/8000)},time * 4/8);
-      setTimeout(function(){play(steps[5], stepPlayClasses(6) , time/8000)},time * 5/8);
-      setTimeout(function(){play(steps[6], stepPlayClasses(7) , time/8000)},time * 6/8);
-      setTimeout(function(){play(steps[7], stepPlayClasses(8) , time/8000)},time * 7/8);
+      setTimeout(function(){play(steps[1] , time/8000)},time/8);
+      setTimeout(function(){play(steps[2] , time/8000)},time * 2/8);
+      setTimeout(function(){play(steps[3] , time/8000)},time * 3/8);
+      setTimeout(function(){play(steps[4] , time/8000)},time * 4/8);
+      setTimeout(function(){play(steps[5] , time/8000)},time * 5/8);
+      setTimeout(function(){play(steps[6] , time/8000)},time * 6/8);
+      setTimeout(function(){play(steps[7] , time/8000)},time * 7/8);
       setTimeout(function(){soundloop(tinput)} , time);
+
     }
+
 
 document.querySelector("#play").addEventListener("click" , function(){soundloop(4000)});
 document.querySelector("#stop").addEventListener("click" , function(){stop = true});
