@@ -15,8 +15,7 @@ const clearSelectedPads = () => {
 
 const stepPlayClasses = (step) => {
   document.querySelector(`#step-${step}`).classList.add("step-play");   
-  if (step === 1){deleteStepPlayClasses(9)}
-  else {deleteStepPlayClasses(step)};
+  step === 1 ? deleteStepPlayClasses(9) : deleteStepPlayClasses(step);
 }
 
 const deleteStepPlayClasses = (step) => {
@@ -24,7 +23,7 @@ const deleteStepPlayClasses = (step) => {
 }
 
 const barLoop = (time) => {
-  if(stop){stop = false ; return}
+  if(stop){stop = false ; return};
   stepPlayClasses(1);
   setTimeout(function(){stepPlayClasses(2) , time/8000},time/8);
   setTimeout(function(){stepPlayClasses(3) , time/8000},time * 2/8);
