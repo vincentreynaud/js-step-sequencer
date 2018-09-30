@@ -39,26 +39,22 @@ function soundToggle(line , row){
 }
 
     function soundloop(time){
-      if(stop){
-        stop = false;
-        return
+      if(stop){ 
+        stop = false; 
+        return 
       }
-      play(steps[0] , time/8000);
-      stepPlayClasses(0);
-      setTimeout(function(){play(steps[1] , time/8000); stepPlayClasses(1)},time/8);
-      setTimeout(function(){play(steps[2] , time/8000); stepPlayClasses(2)},time * 2/8);
-      setTimeout(function(){play(steps[3] , time/8000); stepPlayClasses(3)},time * 3/8);
-      setTimeout(function(){play(steps[4] , time/8000); stepPlayClasses(4)},time * 4/8);
-      setTimeout(function(){play(steps[5] , time/8000); stepPlayClasses(5)},time * 5/8);
-      setTimeout(function(){play(steps[6] , time/8000); stepPlayClasses(6)},time * 6/8);
-      setTimeout(function(){play(steps[7] , time/8000); stepPlayClasses(7)},time * 7/8);
-      setTimeout(function(){stepPlayClasses(8)},time);
-
+      for (i = 0; i < 8; ++i) { 
+        let j = i;
+        setTimeout(function(){
+          stepPlayClasses(j); play(steps[j] , time/8000)} , time * j/8);
+      }
+      setTimeout(function(){stepPlayClasses(8)} , time);
       setTimeout(function(){soundloop(tinput)} , time);
     }
 
 document.querySelector("#play").addEventListener("click" , function(){soundloop(4000)});
 document.querySelector("#stop").addEventListener("click" , function(){stop = true});
+
 document.querySelector("#trash").addEventListener("click" , function(){
   clearSelectedPads();
   for(let i = 0 ; i < 8 ; i++){
