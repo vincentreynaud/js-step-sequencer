@@ -1,11 +1,8 @@
-const everyPad = document.querySelectorAll(".pad");
-everyPad.forEach(pad => {
-  pad.addEventListener("click", () => {
-    pad.classList.contains("pad-pressed")
-      ? pad.classList.remove("pad-pressed")
-      : pad.classList.add("pad-pressed");
-  });
-});
+const clickBehavior = (pad) => {
+  pad.classList.contains("pad-pressed")
+  ? pad.classList.remove("pad-pressed")
+  : pad.classList.add("pad-pressed");
+}
 
 const clearSelectedPads = () => {
   document.querySelectorAll(".pad-pressed").forEach(pad => {

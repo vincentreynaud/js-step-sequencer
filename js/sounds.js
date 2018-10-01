@@ -58,8 +58,9 @@ function addFalseValues () {
 
 document.querySelector("#play").addEventListener("click", function () { soundloop(4000) });
 document.querySelector("#stop").addEventListener("click", function () { stop = true });
-document.querySelector("#trash").addEventListener("click" , function(){ clearSelectedPads(); addFalseValues() });
+document.querySelector("#trash").addEventListener("click", function () { clearSelectedPads(); addFalseValues() });
 document.querySelector("#myRange").addEventListener("input", function (e) { tinput = 480000 / (e.target.value) });
+document.querySelectorAll(".pad").forEach( pad => { pad.addEventListener("click", () =>{ clickBehavior(pad) }); });
 
 for (let i = 0; i < 8; i++) {
   for (let j = 0; j < 8; j++) {
