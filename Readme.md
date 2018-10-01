@@ -16,6 +16,7 @@ Create a virtual Drum Set using HTML5, JavaScript the Web Audio API.
 ### Step Sequencer
 
 - http://highlinux.com/sequencer/
+- http://jxnblk.com/stepkit/?tempo=96&currentKit=1&currentBank=2&loopLength=16
 - https://afuh.github.io/sequencer/
 - https://learningmusic.ableton.com/make-beats/make-beats.html
 - https://codepen.io/njmcode/pen/PwaXwB
