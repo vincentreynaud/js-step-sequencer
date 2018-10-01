@@ -7,8 +7,29 @@ everyPad.forEach(pad => {
   });
 });
 
-function clearSelectedPads() {
+const clearSelectedPads = () => {
   document.querySelectorAll(".pad-pressed").forEach(pad => {
     pad.classList.remove("pad-pressed");
   });
+}
+
+const stepPlayClasses = (step) => {
+  if (step === 0){
+    addStepPlayClasses(step);
+  }
+  else if (step === 8) {
+    deleteStepPlayClasses(step);    
+  }
+  else {
+    deleteStepPlayClasses(step); 
+    addStepPlayClasses(step);
+   };
+}
+
+const addStepPlayClasses = (step) => {
+  document.querySelector(`#step-${step+1}`).classList.add("step-play");   
+}
+
+const deleteStepPlayClasses = (step) => {
+  document.querySelector(`#step-${step}`).classList.remove("step-play");
 }
