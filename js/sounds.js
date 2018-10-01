@@ -1,15 +1,11 @@
 let gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995];
 
-let steps = [
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false]
-];
+let steps = new Array(8);
+for(let i = 0 ; i < 8 ; i++){
+  steps[i] = new Array(8)
+}
+
+addFalseValues ()
 
 let sounds = new AudioContext(), tinput = 4000, stop;
 
@@ -58,13 +54,8 @@ function soundloop(time) {
 document.querySelector("#play").addEventListener("click", function () { soundloop(4000) });
 document.querySelector("#stop").addEventListener("click", function () { stop = true });
 
-document.querySelector("#trash").addEventListener("click", function () {
-  clearSelectedPads();
-  for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 8; j++) {
-      steps[i][j] = false;
-    }
-  }
+document.querySelector("#trash").addEventListener("click" , function(){
+  clearSelectedPads(); addFalseValues ()
 });
 
 for (let i = 0; i < 8; i++) {
@@ -73,4 +64,12 @@ for (let i = 0; i < 8; i++) {
   }
 };
 
-document.querySelector("#myRange").addEventListener("input", function (e) { tinput = 480000 / (e.target.value) })
+document.querySelector("#myRange").addEventListener("input", function (e) { tinput = 480000 / (e.target.value) });
+
+function addFalseValues () {
+  for(let i = 0 ; i < 8 ; i++){
+      for(let j = 0 ; j < 8 ; j++){
+    steps[i][j] = false;
+    }
+  }
+}
