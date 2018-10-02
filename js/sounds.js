@@ -8,7 +8,9 @@ addFalseValues();
 
 let sounds = new AudioContext(), tinput = 4000, stop;
 
-function play(step, time) {
+let instrument = "sine";
+
+function play(step, time, tone) {
   let chord = [];
   for (let i = 0; i < 8; i++) {
 
@@ -16,7 +18,7 @@ function play(step, time) {
       chord[i] = sounds.createOscillator();
       chord[i].frequency.value = gmin[i];
 
-      chord[i].type = "sine";
+      chord[i].type = tone;
       chord[i].connect(sounds.destination);
       chord[i].start(sounds.currentTime);
       chord[i].stop(sounds.currentTime + time);
@@ -41,7 +43,7 @@ function soundloop(time) {
 
   for (i = 0; i < 8; ++i) {
     let j = i;
-    setTimeout(function () { stepPlayClasses(j); play(steps[j], time / 8000) }, time * j / 8);
+    setTimeout(function () { stepPlayClasses(j); play(steps[j], time / 8000, instrument) }, time * j / 8);
   }
 
   setTimeout(function () { stepPlayClasses(8) }, time);
@@ -68,3 +70,13 @@ for (let i = 0; i < 8; i++) {
   }
 }
 
+//select instruments changing the tone
+var selectInstrument = document.getElementById("instruments");
+selectInstrument.addEventListener("change", function() {
+    if (selectInstrument.value === "Synth"){
+      instrument="sine";
+    }
+    else if (selectInstrument.value === "Orchestra"){
+      instrument="sawtooth";
+    }
+});
