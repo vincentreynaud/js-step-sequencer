@@ -1,17 +1,22 @@
+//Classes
+
+//Click Pads
 const clickBehavior = (pad) => {
   pad.classList.contains("pad-pressed")
   ? pad.classList.remove("pad-pressed")
   : pad.classList.add("pad-pressed");
 }
 
+//ClearButton
 const clearSelectedPads = () => {
   document.querySelectorAll(".pad-pressed").forEach(pad => {
     pad.classList.remove("pad-pressed");
   });
 }
 
+// PlayButton
 const stepPlayClasses = (step) => {
-  if (step === 0){
+  if (step === 0) {
     addStepPlayClasses(step);
   }
   else if (step === 8) {
