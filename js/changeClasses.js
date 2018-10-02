@@ -14,7 +14,7 @@ const clearSelectedPads = () => {
   });
 }
 
-// PlayButton
+// PlayButtonAction
 const stepPlayClasses = (step) => {
   if (step === 0) {
     addStepPlayClasses(step);

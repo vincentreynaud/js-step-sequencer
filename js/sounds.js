@@ -46,7 +46,7 @@ const soundToggle = (line, row) => {
 }
 
 //Play ActionButton
-const soundloop = time => {
+const soundLoop = time => {
   if (stop) {
     stop = false;
     return;
@@ -58,12 +58,13 @@ const soundloop = time => {
   }
 
   setTimeout( () => { stepPlayClasses(8) }, time);
-  setTimeout( () => { soundloop(tinput) }, time);
+  setTimeout( () => { soundLoop(tinput) }, time);
 }
 
 const init = () => {
+
   //EventListeners
-  document.querySelector("#play").addEventListener("click", () => { soundloop(4000) });
+  document.querySelector("#play").addEventListener("click", () => { soundLoop(4000) });
   document.querySelector("#stop").addEventListener("click", () => { stop = true });
   document.querySelector("#trash").addEventListener("click", () => { clearSelectedPads(); addFalseValues() });
   document.querySelector("#myRange").addEventListener("input", (e) => { tinput = 480000 / (e.target.value) });
@@ -77,7 +78,7 @@ const init = () => {
   }
 
   //EventListener select instruments changing the tone
-  var selectInstrument = document.getElementById("instruments");
+  const selectInstrument = document.getElementById("instruments");
   selectInstrument.addEventListener("change", () => {
     if (selectInstrument.value === "Synth"){
       instrument="sine";
