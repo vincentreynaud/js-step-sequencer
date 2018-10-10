@@ -17,6 +17,11 @@ let steps = [
 let sounds = new AudioContext();
 let tinput = 4000;
 let stop;
+    masterVolume = sounds.createGain();
+ 
+masterVolume.gain.value = 0.25;
+masterVolume.connect(sounds.destination);
+
 
 function play(step , time){
 let chord = [];
@@ -26,9 +31,8 @@ let chord = [];
     if(step[i]){
       chord[i] = sounds.createOscillator();
       chord[i].frequency.value = gmin[i];
-
+      chord[i].connect(masterVolume);
       chord[i].type = "sine";
-      chord[i].connect(sounds.destination);
       chord[i].start(sounds.currentTime);
       chord[i].stop(sounds.currentTime + time);
     }
@@ -48,7 +52,7 @@ function soundToggle(line , row){
     function soundloop(time){
       if(stop){
         stop = false;
-        return
+        return;
       }
       play(steps[0] , time/8000);
       setTimeout(function(){play(steps[1] , time/8000)},time/8);
