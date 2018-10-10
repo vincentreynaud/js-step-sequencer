@@ -1,3 +1,4 @@
+"use strict"
 //Create Default Array Values
 let steps = new Array(8);
 for(let i = 0 ; i < 8 ; i++){
@@ -19,6 +20,11 @@ const gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995
 
 let sounds = new AudioContext(), tinput = 4000, instrument = "sine", stop;
 
+let masterVolume = sounds.createGain();
+ 
+masterVolume.gain.value = 0.25;
+masterVolume.connect(sounds.destination);
+
 const play = (step, time, tone) => {
   let chord = [];
   for (let i = 0; i < 8; i++) {
@@ -28,7 +34,7 @@ const play = (step, time, tone) => {
       chord[i].frequency.value = gmin[i];
 
       chord[i].type = tone;
-      chord[i].connect(sounds.destination);
+      chord[i].connect(masterVolume);
       chord[i].start(sounds.currentTime);
       chord[i].stop(sounds.currentTime + time);
     };
@@ -52,7 +58,7 @@ const soundLoop = time => {
     return;
   };
 
-  for (i = 0; i < 8; ++i) {
+  for (let i = 0; i < 8; ++i) {
     let j = i;
     setTimeout( () => { stepPlayClasses(j); play(steps[j], time / 8000, instrument) }, time * j / 8);
   }
@@ -83,8 +89,14 @@ const init = () => {
     if (selectInstrument.value === "Synth"){
       instrument="sine";
     }
-    else if (selectInstrument.value === "Orchestra"){
+    else if (selectInstrument.value === "Sawtooth"){
       instrument="sawtooth";
+    }
+    else if (selectInstrument.value === "Square"){
+      instrument="square";
+    }
+    else if (selectInstrument.value === "Triangle"){
+      instrument="triangle";
     };
   });
 }
