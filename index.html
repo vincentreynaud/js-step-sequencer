@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body onload="init();">
 
   <div id="sequencer">
     <div class="sequencer">
@@ -30,10 +30,11 @@
         <!-- here comes a bpm slider -->
         <div class="select-wrapper">
           <span>Instrument</span>
-          <select data-label="wave" class="wave navigation-buttons">
+          <select id="instruments" data-label="wave" class="wave navigation-buttons">
             <option class="optionColor">Synth</option>
-            <option class="optionColor">Drums</option>
-            <option>Orchestra</option>
+            <option>Sawtooth</option>
+            <option>Square</option>
+            <option>Triangle</option>
           </select>
         </div>
 
