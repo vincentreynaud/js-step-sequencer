@@ -1,4 +1,5 @@
 "use strict";
+
 //Create Default Array Values
 let steps = new Array(8);
 for (let i = 0; i < 8; i++) {
@@ -16,6 +17,15 @@ function addFalseValues() {
 }
 
 //Audio API
+let audioContext = new AudioContext();
+let timeInput = 4000;
+let instrument = document.getElementById("instruments");
+let stop = null;
+
+let masterVolume = audioContext.createGain();
+masterVolume.gain.value = 0.25;
+masterVolume.connect(audioContext.destination);
+
 const gmin = [
   195.995,
   220,
@@ -27,33 +37,23 @@ const gmin = [
   391.995
 ];
 
-let sounds = new AudioContext(),
-  tinput = 4000,
-  instrument = document.getElementById("instruments"),
-  stop;
-
-let masterVolume = sounds.createGain();
-
-masterVolume.gain.value = 0.25;
-masterVolume.connect(sounds.destination);
-
 const play = (step, time, tone) => {
   let chord = [];
   for (let i = 0; i < 8; i++) {
     if (step[i]) {
-      chord[i] = sounds.createOscillator();
+      chord[i] = audioContext.createOscillator();
       chord[i].frequency.value = gmin[i];
 
       chord[i].type = tone;
       chord[i].connect(masterVolume);
-      chord[i].start(sounds.currentTime);
-      chord[i].stop(sounds.currentTime + time);
+      chord[i].start(audioContext.currentTime);
+      chord[i].stop(audioContext.currentTime + time);
     }
   }
 };
 
 //add Sound to clicked Pads
-const soundToggle = (line, row) => {
+const padToggle = (row, line) => {
   if (steps[row][line]) {
     steps[row][line] = false;
   } else {
@@ -80,7 +80,7 @@ const soundLoop = time => {
     stepPlayClasses(8);
   }, time);
   setTimeout(() => {
-    soundLoop(tinput);
+    soundLoop(timeInput);
   }, time);
 };
 
@@ -97,7 +97,7 @@ const init = () => {
     addFalseValues();
   });
   document.querySelector("#myRange").addEventListener("input", e => {
-    tinput = 480000 / e.target.value;
+    timeInput = 480000 / e.target.value;
   });
   document.querySelectorAll(".pad").forEach(pad => {
     pad.addEventListener("click", () => {
@@ -111,7 +111,7 @@ const init = () => {
       document
         .querySelector("#step-" + (i + 1))
         .children[j].addEventListener("click", () => {
-          soundToggle(j, i);
+          padToggle(i, j);
         });
     }
   }
