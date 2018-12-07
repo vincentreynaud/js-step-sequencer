@@ -1,25 +1,29 @@
 "use strict";
 
-//Create Default Array Values
-let steps = new Array(8);
-for (let i = 0; i < 8; i++) {
-  steps[i] = new Array(8);
+function createStepTemplate() {
+  let steps = new Array(8);
+  for (let i = 0; i < 8; i++) {
+    steps[i] = new Array(8);
+  }
+
+  return addFalseValues(steps);
 }
-addFalseValues();
 
 //add False Value to the Array
-function addFalseValues() {
+function addFalseValues(steps) {
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       steps[i][j] = false;
     }
   }
+  return steps;
 }
 
 //Audio API
 let audioContext = new AudioContext();
 let timeInput = 4000;
 let instrument = document.getElementById("instruments");
+let steps = createStepTemplate();
 let stop = null;
 
 let masterVolume = audioContext.createGain();
