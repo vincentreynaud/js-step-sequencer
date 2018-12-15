@@ -2,7 +2,7 @@
 
 import StepSequencer from "./modules/StepSequencer";
 
-//SliderBMP
+// BPM Slider
 const slider = document.getElementById("time-signature");
 const output = document.getElementById("demo");
 output.innerHTML = slider.value;

@@ -1,12 +1,13 @@
 "use strict";
 
 import Pads from "./Pads";
+import gmin from "../scale";
 
 class StepSequencer {
   constructor() {
     this.audioContext = new AudioContext();
-    this.scale = this.getScale();
     this.timeInput = 4000;
+    this.scale = gmin;
     this.masterVolume = this.audioContext.createGain();
     this.steps = this.createStepTemplate();
     this.pads = new Pads();
@@ -25,7 +26,6 @@ class StepSequencer {
   }
 
   registerEvents() {
-    console.log(this.elements)
     this.elements.controls.addEventListener("click", (e) => {
       // replace by switch statement
       if (e.target.closest("#play")) {
@@ -48,7 +48,7 @@ class StepSequencer {
       });
     });
 
-    //EventListener add sound changing arrayValues
+    // EventListener add sound changing arrayValues
     for (let i = 0; i < 8; i++) {
       for (let j = 0; j < 8; j++) {
         document
@@ -60,6 +60,7 @@ class StepSequencer {
     }
   }
 
+  // rename
   padToggle(row, line) {
     if (this.steps[row][line]) {
       this.steps[row][line] = false;
@@ -136,21 +137,6 @@ class StepSequencer {
     }
 
     return steps;
-  }
-
-  getScale() {
-    const gmin = [
-      195.995,
-      220,
-      233.082,
-      261.626,
-      293.665,
-      311.127,
-      349.228,
-      391.995
-    ];
-
-    return gmin
   }
 }
 
