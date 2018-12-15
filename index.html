@@ -15,22 +15,22 @@
 
 </head>
 
-<body onload="init();">
+<body>
 
   <div id="sequencer">
     <div class="sequencer">
-      <div class="buttons">
+      <div id="controls " class="buttons">
         <!-- check class of button play -->
         <button id="stop" class="navigation-buttons fa fa-stop"></button>
         <button id="play" class="navigation-buttons fa fa-play"></button>
-        <button class="navigation-buttons fa fa-microphone"></button>
-        <button id="trash" class="navigation-buttons fa fa-trash"></button>
+        <button id="record" class="navigation-buttons fa fa-microphone"></button>
+        <button id="delete" class="navigation-buttons fa fa-trash"></button>
 
         <!-- settings, bpm and other stuff -->
         <!-- here comes a bpm slider -->
         <div class="select-wrapper">
           <span>Instrument</span>
-          <select id="instruments" data-label="wave" class="wave navigation-buttons">
+          <select class="wave navigation-buttons" id="instrument" data-label="wave">
             <option class="optionColor" value="sine">Synth</option>
             <option value="sawtooth">Sawtooth</option>
             <option value="square">Square</option>
@@ -40,16 +40,16 @@
 
         <div class="select-wrapper">
           <span>Octave</span>
-          <select data-label="octave" class="octave navigation-buttons">
+          <select id="octave" data-label="octave" class="octave navigation-buttons">
             <option> 1</option>
             <option>2</option>
-            <option> 3</option>
+            <option>3</option>
           </select>
         </div>
 
         <div class="select-wrapper">
           <span>Style</span>
-          <select data-label="octave" class="BPM navigation-buttons">
+          <select id="style" data-label="octave" class="BPM navigation-buttons">
             <option>Legato</option>
             <option>Staccato</option>
           </select>
@@ -62,7 +62,7 @@
 
             <span id="demo"></span>
 
-            <input type="range" min="60" max="200" value="120" class="slider" id="myRange">
+            <input type="range" min="60" max="200" value="120" class="slider" id="time-signature">
           </div>
         </div>
 
@@ -183,11 +183,7 @@
     </div>
   </div>
 
-  <!-- JS Script for BPM slider -->
-  <script src="js/sliderBPM.js"></script>
-  <!-- JS Script for changing Classes by pressing -->
-  <script src="js/changeClasses.js"></script>
-  <script src="js/sounds.js"></script>
+  <script src="src/index.js"></script>
 </body>
 
 </html>

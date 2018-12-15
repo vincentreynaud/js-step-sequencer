@@ -85,11 +85,13 @@
       audio.play();
       key.classList.add('key-pressed');
     };
+
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return;
       // console.log(e.propertyName);
       this.classList.remove('key-pressed')
     };
+
     const keys = document.querySelectorAll('.key');
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
     window.addEventListener('keydown', playSound);
