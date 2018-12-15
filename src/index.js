@@ -1,9 +1,14 @@
-import "./modules/sliderBPM";
-import "./modules/changeClasses";
+// require('bootstrap');
+
 import StepSequencer from "./modules/StepSequencer";
 
-import './scss/style.scss';
+//SliderBMP
+const slider = document.getElementById("time-signature");
+const output = document.getElementById("demo");
+output.innerHTML = slider.value;
 
-"use strict";
+slider.oninput = () => {
+  output.innerHTML = this.value;
+};
 
 const sequencer = new StepSequencer();

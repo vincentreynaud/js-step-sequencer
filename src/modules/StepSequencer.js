@@ -1,12 +1,16 @@
 "use strict";
 
+import Pads from "./Pads";
+
 class StepSequencer {
   constructor() {
     this.audioContext = new AudioContext();
-    this.steps = createStepTemplate();
+    this.scale = this.getScale();
     this.timeInput = 4000;
+    this.masterVolume = this.audioContext.createGain();
+    this.steps = this.createStepTemplate();
+    this.pads = new Pads();
     this.stop = null;
-    this.masterVolume = audioContext.createGain();
 
     this.elements = {}
     this.init()
@@ -15,29 +19,32 @@ class StepSequencer {
   init() {
     this.getElements()
     this.masterVolume.gain.value = 0.25;
-    this.masterVolume.connect(audioContext.destination);
+    this.masterVolume.connect(this.audioContext.destination);
 
     this.registerEvents()
   }
 
   registerEvents() {
+    console.log(this.elements)
     this.elements.controls.addEventListener("click", (e) => {
+      // replace by switch statement
       if (e.target.closest("#play")) {
-        soundLoop(4000);
+        this.playSequence(this.timeInput);
       } else if (e.target.closest("#stop")) {
-        stop = true;
+        // create toogleStopBtn method
+        this.stop = true;
       } else if (e.target.closest("#delete")) {
-        clearSelectedPads();
-        addFalseValues(this.steps);
+        this.clearSelectedPads();
+        this.addFalseValues(this.steps);
       } else if (e.target.closest("#time-signature")) {
+        // write setTimeInput method
         this.timeInput = 480000 / e.target.value;
       }
-
-    })
+    });
 
     this.elements.pads.forEach(pad => {
       pad.addEventListener("click", () => {
-        clickBehavior(pad);
+        togglePadPressed(pad);
       });
     });
 
@@ -47,11 +54,35 @@ class StepSequencer {
         document
           .querySelector("#step-" + (i + 1))
           .children[j].addEventListener("click", () => {
-            padToggle(i, j);
+            this.padToggle(i, j);
           });
       }
     }
   }
+
+  //Play ActionButton
+  playSequence(time) {
+    if (this.stop) {
+      this.stop = false;
+      return;
+    }
+
+    for (let i = 0; i < 8; ++i) {
+      let j = i;
+      setTimeout(() => {
+        this.pads.toggleStepPlayClass(j);
+        this.play(this.steps[j], time / 8000, this.elements.instrument.value);
+      }, (time * j) / 8);
+    }
+
+    setTimeout(() => {
+      this.pads.toggleStepPlayClass(8);
+    }, time);
+
+    setTimeout(() => {
+      this.playSequence(this.timeInput);
+    }, time);
+  };
 
   play(step, time, tone) {
     let chord = [];
@@ -68,38 +99,6 @@ class StepSequencer {
     }
   };
 
-  //add Sound to clicked Pads
-  padToggle(row, line) {
-    if (steps[row][line]) {
-      steps[row][line] = false;
-    } else {
-      steps[row][line] = true;
-    }
-  };
-
-  //Play ActionButton
-  soundLoop(time) {
-    if (stop) {
-      stop = false;
-      return;
-    }
-
-    for (let i = 0; i < 8; ++i) {
-      let j = i;
-      setTimeout(() => {
-        stepPlayClasses(j);
-        play(steps[j], time / 8000, this.elements.instrument.value);
-      }, (time * j) / 8);
-    }
-
-    setTimeout(() => {
-      stepPlayClasses(8);
-    }, time);
-    setTimeout(() => {
-      soundLoop(this.timeInput);
-    }, time);
-  };
-
   getElements() {
     Object.assign(this.elements, {
       controls: document.querySelector("#controls"),
@@ -107,7 +106,7 @@ class StepSequencer {
       stop: document.querySelector("#stop"),
       delete: document.querySelector("#delete"),
       bpm: document.querySelector("#time-signature"),
-      instrument = document.querySelector("#instruments"),
+      instrument: document.querySelector("#instrument"),
       pads: document.querySelectorAll(".pad")
     })
   }
@@ -118,7 +117,7 @@ class StepSequencer {
       steps[i] = new Array(8);
     }
 
-    return addFalseValues(steps);
+    return this.addFalseValues(steps);
   }
 
   // add boolean value to the steps array
@@ -131,22 +130,21 @@ class StepSequencer {
 
     return steps;
   }
+
+  getScale() {
+    const gmin = [
+      195.995,
+      220,
+      233.082,
+      261.626,
+      293.665,
+      311.127,
+      349.228,
+      391.995
+    ];
+
+    return gmin
+  }
 }
-
-
-
-//Audio API
-const gmin = [
-  195.995,
-  220,
-  233.082,
-  261.626,
-  293.665,
-  311.127,
-  349.228,
-  391.995
-];
-
-
 
 export default StepSequencer;

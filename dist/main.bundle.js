@@ -95,90 +95,13 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_sliderBPM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/sliderBPM */ "./src/modules/sliderBPM.js");
-/* harmony import */ var _modules_sliderBPM__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_sliderBPM__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_changeClasses__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/changeClasses */ "./src/modules/changeClasses.js");
-/* harmony import */ var _modules_changeClasses__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_changeClasses__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/StepSequencer */ "./src/modules/StepSequencer.js");
-/* harmony import */ var _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_StepSequencer__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scss/style.scss */ "./src/scss/style.scss");
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/StepSequencer */ "./src/modules/StepSequencer.js");
+var _this = undefined;
 
+// require('bootstrap');
+ //SliderBMP
 
-
-
-"use strict";
-
-var sequencer = new _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_2___default.a();
-
-/***/ }),
-
-/***/ "./src/modules/StepSequencer.js":
-/*!**************************************!*\
-  !*** ./src/modules/StepSequencer.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/src/modules/StepSequencer.js: Unexpected token, expected \",\" (111:20)\n\n\u001b[0m \u001b[90m 109 | \u001b[39m      bpm\u001b[33m:\u001b[39m document\u001b[33m.\u001b[39mquerySelector(\u001b[32m\"#time-signature\"\u001b[39m)\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 110 | \u001b[39m      instrument \u001b[33m=\u001b[39m document\u001b[33m.\u001b[39mquerySelector(\u001b[32m\"#instruments\"\u001b[39m)\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 111 | \u001b[39m      pads\u001b[33m:\u001b[39m document\u001b[33m.\u001b[39mquerySelectorAll(\u001b[32m\".pad\"\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 112 | \u001b[39m    })\u001b[0m\n\u001b[0m \u001b[90m 113 | \u001b[39m  }\u001b[0m\n\u001b[0m \u001b[90m 114 | \u001b[39m\u001b[0m\n    at Parser.raise (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:4047:15)\n    at Parser.unexpected (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5378:16)\n    at Parser.expect (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5366:28)\n    at Parser.parseObj (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6857:14)\n    at Parser.parseExprAtom (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6483:21)\n    at Parser.parseExprSubscripts (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6100:21)\n    at Parser.parseMaybeUnary (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6079:21)\n    at Parser.parseExprOps (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5964:21)\n    at Parser.parseMaybeConditional (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5936:21)\n    at Parser.parseMaybeAssign (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5883:21)\n    at Parser.parseExprListItem (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:7222:18)\n    at Parser.parseCallExpressionArguments (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6308:22)\n    at Parser.parseSubscript (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6210:32)\n    at Parser.parseSubscripts (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6120:19)\n    at Parser.parseExprSubscripts (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6110:17)\n    at Parser.parseMaybeUnary (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:6079:21)\n    at Parser.parseExprOps (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5964:21)\n    at Parser.parseMaybeConditional (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5936:21)\n    at Parser.parseMaybeAssign (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5883:21)\n    at Parser.parseExpression (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:5836:21)\n    at Parser.parseStatementContent (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:7615:21)\n    at Parser.parseStatement (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:7501:17)\n    at Parser.parseBlockOrModuleBlockBody (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:8069:23)\n    at Parser.parseBlockBody (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:8056:10)\n    at Parser.parseBlock (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:8045:10)\n    at Parser.parseFunctionBody (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:7153:24)\n    at Parser.parseFunctionBodyAndFinish (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:7135:10)\n    at Parser.parseMethod (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:7073:10)\n    at Parser.pushClassMethod (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:8477:30)\n    at Parser.parseClassMemberWithIsStatic (/Users/vincentreynaud/Desktop/FILES/WORK/2 Production/1 Web Projects/step-sequencer/node_modules/@babel/parser/lib/index.js:8402:12)");
-
-/***/ }),
-
-/***/ "./src/modules/changeClasses.js":
-/*!**************************************!*\
-  !*** ./src/modules/changeClasses.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-//Classes
-//Click Pads
-var clickBehavior = function clickBehavior(pad) {
-  pad.classList.contains("pad-pressed") ? pad.classList.remove("pad-pressed") : pad.classList.add("pad-pressed");
-}; //ClearButton
-
-
-var clearSelectedPads = function clearSelectedPads() {
-  document.querySelectorAll(".pad-pressed").forEach(function (pad) {
-    pad.classList.remove("pad-pressed");
-  });
-}; // PlayButtonAction
-
-
-var stepPlayClasses = function stepPlayClasses(step) {
-  if (step === 0) {
-    addStepPlayClasses(step);
-  } else if (step === 8) {
-    deleteStepPlayClasses(step);
-  } else {
-    deleteStepPlayClasses(step);
-    addStepPlayClasses(step);
-  }
-
-  ;
-};
-
-var addStepPlayClasses = function addStepPlayClasses(step) {
-  document.querySelector("#step-".concat(step + 1)).classList.add("step-play");
-};
-
-var deleteStepPlayClasses = function deleteStepPlayClasses(step) {
-  document.querySelector("#step-".concat(step)).classList.remove("step-play");
-};
-
-/***/ }),
-
-/***/ "./src/modules/sliderBPM.js":
-/*!**********************************!*\
-  !*** ./src/modules/sliderBPM.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var _this = this;
-
-//SliderBMP
-var slider = document.getElementById("myRange");
+var slider = document.getElementById("time-signature");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
 
@@ -186,16 +109,261 @@ slider.oninput = function () {
   output.innerHTML = _this.value;
 };
 
+var sequencer = new _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_0__["default"]();
+
 /***/ }),
 
-/***/ "./src/scss/style.scss":
+/***/ "./src/modules/Pads.js":
 /*!*****************************!*\
-  !*** ./src/scss/style.scss ***!
+  !*** ./src/modules/Pads.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Pads =
+/*#__PURE__*/
+function () {
+  function Pads() {
+    _classCallCheck(this, Pads);
+  }
+
+  _createClass(Pads, [{
+    key: "togglePadPressed",
+    value: function togglePadPressed(pad) {
+      pad.classList.contains("pad-pressed") ? pad.classList.remove("pad-pressed") : pad.classList.add("pad-pressed");
+    }
+  }, {
+    key: "clearSelectedPads",
+    value: function clearSelectedPads() {
+      document.querySelectorAll(".pad-pressed").forEach(function (pad) {
+        pad.classList.remove("pad-pressed");
+      });
+    }
+  }, {
+    key: "toogleStepPlayClass",
+    value: function toogleStepPlayClass(step) {
+      if (step === 0) {
+        addStepPlayClass(step);
+      } else if (step === 8) {
+        removeStepPlayClass(step);
+      } else {
+        removeStepPlayClass(step);
+        addStepPlayClasses(step);
+      }
+
+      ;
+    }
+  }, {
+    key: "addStepPlayClass",
+    value: function addStepPlayClass(step) {
+      document.querySelector("#step-".concat(step + 1)).classList.add("step-play");
+    }
+  }, {
+    key: "removeStepPlayClass",
+    value: function removeStepPlayClass(step) {
+      document.querySelector("#step-".concat(step)).classList.remove("step-play");
+    }
+  }]);
+
+  return Pads;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Pads);
+
+/***/ }),
+
+/***/ "./src/modules/StepSequencer.js":
+/*!**************************************!*\
+  !*** ./src/modules/StepSequencer.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Pads__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pads */ "./src/modules/Pads.js");
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+var StepSequencer =
+/*#__PURE__*/
+function () {
+  function StepSequencer() {
+    _classCallCheck(this, StepSequencer);
+
+    this.audioContext = new AudioContext();
+    this.scale = this.getScale();
+    this.timeInput = 4000;
+    this.masterVolume = this.audioContext.createGain();
+    this.steps = this.createStepTemplate();
+    this.pads = new _Pads__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    this.stop = null;
+    this.elements = {};
+    this.init();
+  }
+
+  _createClass(StepSequencer, [{
+    key: "init",
+    value: function init() {
+      this.getElements();
+      this.masterVolume.gain.value = 0.25;
+      this.masterVolume.connect(this.audioContext.destination);
+      this.registerEvents();
+    }
+  }, {
+    key: "registerEvents",
+    value: function registerEvents() {
+      var _this = this;
+
+      console.log(this.elements);
+      this.elements.controls.addEventListener("click", function (e) {
+        // replace by switch statement
+        if (e.target.closest("#play")) {
+          _this.playSequence(_this.timeInput);
+        } else if (e.target.closest("#stop")) {
+          // create toogleStopBtn method
+          _this.stop = true;
+        } else if (e.target.closest("#delete")) {
+          _this.clearSelectedPads();
+
+          _this.addFalseValues(_this.steps);
+        } else if (e.target.closest("#time-signature")) {
+          // write setTimeInput method
+          _this.timeInput = 480000 / e.target.value;
+        }
+      });
+      this.elements.pads.forEach(function (pad) {
+        pad.addEventListener("click", function () {
+          togglePadPressed(pad);
+        });
+      }); //EventListener add sound changing arrayValues
+
+      var _loop = function _loop(i) {
+        var _loop2 = function _loop2(j) {
+          document.querySelector("#step-" + (i + 1)).children[j].addEventListener("click", function () {
+            _this.padToggle(i, j);
+          });
+        };
+
+        for (var j = 0; j < 8; j++) {
+          _loop2(j);
+        }
+      };
+
+      for (var i = 0; i < 8; i++) {
+        _loop(i);
+      }
+    } //Play ActionButton
+
+  }, {
+    key: "playSequence",
+    value: function playSequence(time) {
+      var _this2 = this;
+
+      if (this.stop) {
+        this.stop = false;
+        return;
+      }
+
+      var _loop3 = function _loop3(i) {
+        var j = i;
+        setTimeout(function () {
+          _this2.pads.toggleStepPlayClass(j);
+
+          _this2.play(_this2.steps[j], time / 8000, _this2.elements.instrument.value);
+        }, time * j / 8);
+      };
+
+      for (var i = 0; i < 8; ++i) {
+        _loop3(i);
+      }
+
+      setTimeout(function () {
+        _this2.pads.toggleStepPlayClass(8);
+      }, time);
+      setTimeout(function () {
+        _this2.playSequence(_this2.timeInput);
+      }, time);
+    }
+  }, {
+    key: "play",
+    value: function play(step, time, tone) {
+      var chord = [];
+
+      for (var i = 0; i < 8; i++) {
+        if (step[i]) {
+          chord[i] = audioContext.createOscillator();
+          chord[i].frequency.value = gmin[i];
+          chord[i].type = tone;
+          chord[i].connect(masterVolume);
+          chord[i].start(audioContext.currentTime);
+          chord[i].stop(audioContext.currentTime + time);
+        }
+      }
+    }
+  }, {
+    key: "getElements",
+    value: function getElements() {
+      Object.assign(this.elements, {
+        controls: document.querySelector("#controls"),
+        play: document.querySelector("#play"),
+        stop: document.querySelector("#stop"),
+        delete: document.querySelector("#delete"),
+        bpm: document.querySelector("#time-signature"),
+        instrument: document.querySelector("#instrument"),
+        pads: document.querySelectorAll(".pad")
+      });
+    }
+  }, {
+    key: "createStepTemplate",
+    value: function createStepTemplate() {
+      var steps = new Array(8);
+
+      for (var i = 0; i < 8; i++) {
+        steps[i] = new Array(8);
+      }
+
+      return this.addFalseValues(steps);
+    } // add boolean value to the steps array
+
+  }, {
+    key: "addFalseValues",
+    value: function addFalseValues(steps) {
+      for (var i = 0; i < 8; i++) {
+        for (var j = 0; j < 8; j++) {
+          steps[i][j] = false;
+        }
+      }
+
+      return steps;
+    }
+  }, {
+    key: "getScale",
+    value: function getScale() {
+      var gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995];
+      return gmin;
+    }
+  }]);
+
+  return StepSequencer;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (StepSequencer);
 
 /***/ })
 
