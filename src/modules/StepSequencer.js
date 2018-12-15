@@ -44,7 +44,7 @@ class StepSequencer {
 
     this.elements.pads.forEach(pad => {
       pad.addEventListener("click", () => {
-        togglePadPressed(pad);
+        this.pads.togglePadPressed(pad);
       });
     });
 
@@ -60,7 +60,14 @@ class StepSequencer {
     }
   }
 
-  //Play ActionButton
+  padToggle(row, line) {
+    if (this.steps[row][line]) {
+      this.steps[row][line] = false;
+    } else {
+      this.steps[row][line] = true;
+    }
+  };
+
   playSequence(time) {
     if (this.stop) {
       this.stop = false;
@@ -88,13 +95,13 @@ class StepSequencer {
     let chord = [];
     for (let i = 0; i < 8; i++) {
       if (step[i]) {
-        chord[i] = audioContext.createOscillator();
-        chord[i].frequency.value = gmin[i];
+        chord[i] = this.audioContext.createOscillator();
+        chord[i].frequency.value = this.scale[i];
 
         chord[i].type = tone;
-        chord[i].connect(masterVolume);
-        chord[i].start(audioContext.currentTime);
-        chord[i].stop(audioContext.currentTime + time);
+        chord[i].connect(this.masterVolume);
+        chord[i].start(this.audioContext.currentTime);
+        chord[i].stop(this.audioContext.currentTime + time);
       }
     }
   };

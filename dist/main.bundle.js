@@ -148,15 +148,15 @@ function () {
       });
     }
   }, {
-    key: "toogleStepPlayClass",
-    value: function toogleStepPlayClass(step) {
+    key: "toggleStepPlayClass",
+    value: function toggleStepPlayClass(step) {
       if (step === 0) {
-        addStepPlayClass(step);
+        this.addStepPlayClass(step);
       } else if (step === 8) {
-        removeStepPlayClass(step);
+        this.removeStepPlayClass(step);
       } else {
-        removeStepPlayClass(step);
-        addStepPlayClasses(step);
+        this.removeStepPlayClass(step);
+        this.addStepPlayClass(step);
       }
 
       ;
@@ -249,7 +249,7 @@ function () {
       });
       this.elements.pads.forEach(function (pad) {
         pad.addEventListener("click", function () {
-          togglePadPressed(pad);
+          _this.pads.togglePadPressed(pad);
         });
       }); //EventListener add sound changing arrayValues
 
@@ -268,8 +268,16 @@ function () {
       for (var i = 0; i < 8; i++) {
         _loop(i);
       }
-    } //Play ActionButton
-
+    }
+  }, {
+    key: "padToggle",
+    value: function padToggle(row, line) {
+      if (this.steps[row][line]) {
+        this.steps[row][line] = false;
+      } else {
+        this.steps[row][line] = true;
+      }
+    }
   }, {
     key: "playSequence",
     value: function playSequence(time) {
@@ -307,12 +315,12 @@ function () {
 
       for (var i = 0; i < 8; i++) {
         if (step[i]) {
-          chord[i] = audioContext.createOscillator();
-          chord[i].frequency.value = gmin[i];
+          chord[i] = this.audioContext.createOscillator();
+          chord[i].frequency.value = this.scale[i];
           chord[i].type = tone;
-          chord[i].connect(masterVolume);
-          chord[i].start(audioContext.currentTime);
-          chord[i].stop(audioContext.currentTime + time);
+          chord[i].connect(this.masterVolume);
+          chord[i].start(this.audioContext.currentTime);
+          chord[i].stop(this.audioContext.currentTime + time);
         }
       }
     }

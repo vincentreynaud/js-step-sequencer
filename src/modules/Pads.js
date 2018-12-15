@@ -11,16 +11,16 @@ class Pads {
     });
   }
   
-  toogleStepPlayClass(step) {
+  toggleStepPlayClass(step) {
     if (step === 0) {
-      addStepPlayClass(step);
+      this.addStepPlayClass(step);
     }
     else if (step === 8) {
-      removeStepPlayClass(step);    
+      this.removeStepPlayClass(step);    
     }
     else {
-      removeStepPlayClass(step); 
-      addStepPlayClasses(step);
+      this.removeStepPlayClass(step); 
+      this.addStepPlayClass(step);
      };
   }
   
