@@ -96,18 +96,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/StepSequencer */ "./src/modules/StepSequencer.js");
-var _this = undefined;
-
 // require('bootstrap');
- // BPM Slider
-
-var slider = document.getElementById("time-signature");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function () {
-  output.innerHTML = _this.value;
-};
 
 var sequencer = new _modules_StepSequencer__WEBPACK_IMPORTED_MODULE_0__["default"]();
 
@@ -223,6 +212,7 @@ function () {
       this.getElements();
       this.masterVolume.gain.value = 0.25;
       this.masterVolume.connect(this.audioContext.destination);
+      this.updateBPMDisplay(this.elements.sliderBPM.value);
       this.registerEvents();
     }
   }, {
@@ -236,15 +226,17 @@ function () {
           _this.playSequence(_this.timeInput);
         } else if (e.target.closest("#stop")) {
           // create toogleStopBtn method
-          _this.stop = true;
+          _this.toggleStopBtn();
         } else if (e.target.closest("#delete")) {
           _this.clearSelectedPads();
 
           _this.addFalseValues(_this.steps);
-        } else if (e.target.closest("#time-signature")) {
-          // write setTimeInput method
-          _this.timeInput = 480000 / e.target.value;
         }
+      });
+      this.elements.sliderBPM.addEventListener("input", function (e) {
+        _this.setBPM(e.target.value);
+
+        _this.updateBPMDisplay(e.target.value);
       });
       this.elements.pads.forEach(function (pad) {
         pad.addEventListener("click", function () {
@@ -267,24 +259,14 @@ function () {
       for (var i = 0; i < 8; i++) {
         _loop(i);
       }
-    } // rename
-
-  }, {
-    key: "padToggle",
-    value: function padToggle(row, line) {
-      if (this.steps[row][line]) {
-        this.steps[row][line] = false;
-      } else {
-        this.steps[row][line] = true;
-      }
     }
   }, {
     key: "playSequence",
     value: function playSequence(time) {
       var _this2 = this;
 
-      if (this.stop) {
-        this.stop = false;
+      if (this.stop === true) {
+        this.toggleStopBtn();
         return;
       }
 
@@ -293,7 +275,7 @@ function () {
         setTimeout(function () {
           _this2.pads.toggleStepPlayClass(j);
 
-          _this2.play(_this2.steps[j], time / 8000, _this2.elements.instrument.value);
+          _this2.playChord(_this2.steps[j], time / 8000, _this2.elements.instrument.value);
         }, time * j / 8);
       };
 
@@ -309,8 +291,8 @@ function () {
       }, time);
     }
   }, {
-    key: "play",
-    value: function play(step, time, tone) {
+    key: "playChord",
+    value: function playChord(step, time, tone) {
       var chord = [];
 
       for (var i = 0; i < 8; i++) {
@@ -325,6 +307,31 @@ function () {
       }
     }
   }, {
+    key: "toggleStopBtn",
+    value: function toggleStopBtn() {
+      this.stop === true ? this.stop = false : this.stop = true;
+    } // rename
+
+  }, {
+    key: "padToggle",
+    value: function padToggle(row, line) {
+      if (this.steps[row][line]) {
+        this.steps[row][line] = false;
+      } else {
+        this.steps[row][line] = true;
+      }
+    }
+  }, {
+    key: "setBPM",
+    value: function setBPM(value) {
+      this.timeInput = 480000 / value;
+    }
+  }, {
+    key: "updateBPMDisplay",
+    value: function updateBPMDisplay(value) {
+      this.elements.sliderDisplay.innerHTML = "".concat(value, " BPM");
+    }
+  }, {
     key: "getElements",
     value: function getElements() {
       Object.assign(this.elements, {
@@ -332,7 +339,8 @@ function () {
         play: document.querySelector("#play"),
         stop: document.querySelector("#stop"),
         delete: document.querySelector("#delete"),
-        bpm: document.querySelector("#time-signature"),
+        sliderBPM: document.querySelector("#bpm-slider"),
+        sliderDisplay: document.querySelector("#bpm-display"),
         instrument: document.querySelector("#instrument"),
         pads: document.querySelectorAll(".pad")
       });

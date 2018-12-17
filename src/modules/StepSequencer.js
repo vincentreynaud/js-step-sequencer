@@ -16,11 +16,12 @@ class StepSequencer {
   }
 
   init() {
-    this.getElements()
+    this.getElements();
     this.masterVolume.gain.value = 0.25;
     this.masterVolume.connect(this.audioContext.destination);
 
-    this.registerEvents()
+    this.updateBPMDisplay(this.elements.sliderBPM.value)
+    this.registerEvents();
   }
 
   registerEvents() {
@@ -28,16 +29,20 @@ class StepSequencer {
       // replace by switch statement
       if (e.target.closest("#play")) {
         this.playSequence(this.timeInput);
-      } else if (e.target.closest("#stop")) {
+      } 
+      else if (e.target.closest("#stop")) {
         // create toogleStopBtn method
-        this.stop = true;
-      } else if (e.target.closest("#delete")) {
+        this.toggleStopBtn();
+      } 
+      else if (e.target.closest("#delete")) {
         this.clearSelectedPads();
         this.addFalseValues(this.steps);
-      } else if (e.target.closest("#time-signature")) {
-        // write setTimeInput method
-        this.timeInput = 480000 / e.target.value;
-      }
+      } 
+    });
+
+    this.elements.sliderBPM.addEventListener("input", (e) => {
+      this.setBPM(e.target.value);
+      this.updateBPMDisplay(e.target.value);
     });
 
     this.elements.pads.forEach(pad => {
@@ -58,18 +63,9 @@ class StepSequencer {
     }
   }
 
-  // rename
-  padToggle(row, line) {
-    if (this.steps[row][line]) {
-      this.steps[row][line] = false;
-    } else {
-      this.steps[row][line] = true;
-    }
-  };
-
   playSequence(time) {
-    if (this.stop) {
-      this.stop = false;
+    if (this.stop === true) {
+      this.toggleStopBtn()
       return;
     }
 
@@ -77,7 +73,7 @@ class StepSequencer {
       let j = i;
       setTimeout(() => {
         this.pads.toggleStepPlayClass(j);
-        this.play(this.steps[j], time / 8000, this.elements.instrument.value);
+        this.playChord(this.steps[j], time / 8000, this.elements.instrument.value);
       }, (time * j) / 8);
     }
 
@@ -90,7 +86,7 @@ class StepSequencer {
     }, time);
   };
 
-  play(step, time, tone) {
+  playChord(step, time, tone) {
     let chord = [];
     for (let i = 0; i < 8; i++) {
       if (step[i]) {
@@ -105,13 +101,35 @@ class StepSequencer {
     }
   };
 
+  toggleStopBtn() {
+    this.stop === true ? this.stop = false : this.stop = true;
+  }
+
+  // rename
+  padToggle(row, line) {
+    if (this.steps[row][line]) {
+      this.steps[row][line] = false;
+    } else {
+      this.steps[row][line] = true;
+    }
+  };
+
+  setBPM(value) {
+    this.timeInput = 480000 / value;
+  }
+
+  updateBPMDisplay(value) {
+    this.elements.sliderDisplay.innerHTML =`${value} BPM`;
+  }
+
   getElements() {
     Object.assign(this.elements, {
       controls: document.querySelector("#controls"),
       play: document.querySelector("#play"),
       stop: document.querySelector("#stop"),
       delete: document.querySelector("#delete"),
-      bpm: document.querySelector("#time-signature"),
+      sliderBPM: document.querySelector("#bpm-slider"),
+      sliderDisplay: document.querySelector("#bpm-display"),
       instrument: document.querySelector("#instrument"),
       pads: document.querySelectorAll(".pad")
     })
