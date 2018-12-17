@@ -125,8 +125,8 @@ function () {
   }
 
   _createClass(Pads, [{
-    key: "togglePadPressed",
-    value: function togglePadPressed(pad) {
+    key: "togglePadPressedClass",
+    value: function togglePadPressedClass(pad) {
       pad.classList.contains("pad-pressed") ? pad.classList.remove("pad-pressed") : pad.classList.add("pad-pressed");
     }
   }, {
@@ -201,7 +201,7 @@ function () {
     this.masterVolume = this.audioContext.createGain();
     this.steps = this.createStepTemplate();
     this.pads = new _Pads__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    this.stop = null;
+    this.stop = true;
     this.elements = {};
     this.init();
   }
@@ -223,10 +223,16 @@ function () {
       this.elements.controls.addEventListener("click", function (e) {
         // replace by switch statement
         if (e.target.closest("#play")) {
+          if (_this.stop === true) {
+            _this.toggleStopBtn();
+          }
+
           _this.playSequence(_this.timeInput);
         } else if (e.target.closest("#stop")) {
-          // create toogleStopBtn method
-          _this.toggleStopBtn();
+          if (_this.stop === false) {
+            _this.toggleStopBtn();
+          } // find an instant way to stop the sequence player
+
         } else if (e.target.closest("#delete")) {
           _this.clearSelectedPads();
 
@@ -240,14 +246,15 @@ function () {
       });
       this.elements.pads.forEach(function (pad) {
         pad.addEventListener("click", function () {
-          _this.pads.togglePadPressed(pad);
+          _this.pads.togglePadPressedClass(pad);
         });
       }); // EventListener add sound changing arrayValues
+      // change that
 
       var _loop = function _loop(i) {
         var _loop2 = function _loop2(j) {
           document.querySelector("#step-" + (i + 1)).children[j].addEventListener("click", function () {
-            _this.padToggle(i, j);
+            _this.togglePadPlay(i, j);
           });
         };
 
@@ -259,16 +266,21 @@ function () {
       for (var i = 0; i < 8; i++) {
         _loop(i);
       }
+    } // rename
+
+  }, {
+    key: "togglePadPlay",
+    value: function togglePadPlay(row, line) {
+      if (this.steps[row][line]) {
+        this.steps[row][line] = false;
+      } else {
+        this.steps[row][line] = true;
+      }
     }
   }, {
     key: "playSequence",
     value: function playSequence(time) {
       var _this2 = this;
-
-      if (this.stop === true) {
-        this.toggleStopBtn();
-        return;
-      }
 
       var _loop3 = function _loop3(i) {
         var j = i;
@@ -310,16 +322,6 @@ function () {
     key: "toggleStopBtn",
     value: function toggleStopBtn() {
       this.stop === true ? this.stop = false : this.stop = true;
-    } // rename
-
-  }, {
-    key: "padToggle",
-    value: function padToggle(row, line) {
-      if (this.steps[row][line]) {
-        this.steps[row][line] = false;
-      } else {
-        this.steps[row][line] = true;
-      }
     }
   }, {
     key: "setBPM",
@@ -330,6 +332,23 @@ function () {
     key: "updateBPMDisplay",
     value: function updateBPMDisplay(value) {
       this.elements.sliderDisplay.innerHTML = "".concat(value, " BPM");
+    }
+  }, {
+    key: "createStepTemplate",
+    value: function createStepTemplate() {
+      var steps = new Array(8);
+
+      for (var i = 0; i < 8; i++) {
+        steps[i] = [false, false, false, false, false, false, false, false]; // default pad value is false, i.e. unpressed
+      }
+
+      return steps;
+    }
+  }, {
+    key: "getScale",
+    value: function getScale() {
+      var gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995];
+      return gmin;
     }
   }, {
     key: "getElements",
@@ -344,35 +363,6 @@ function () {
         instrument: document.querySelector("#instrument"),
         pads: document.querySelectorAll(".pad")
       });
-    }
-  }, {
-    key: "createStepTemplate",
-    value: function createStepTemplate() {
-      var steps = new Array(8);
-
-      for (var i = 0; i < 8; i++) {
-        steps[i] = new Array(8);
-      }
-
-      return this.addFalseValues(steps);
-    } // add boolean value to the steps array
-
-  }, {
-    key: "addFalseValues",
-    value: function addFalseValues(steps) {
-      for (var i = 0; i < 8; i++) {
-        for (var j = 0; j < 8; j++) {
-          steps[i][j] = false;
-        }
-      }
-
-      return steps;
-    }
-  }, {
-    key: "getScale",
-    value: function getScale() {
-      var gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995];
-      return gmin;
     }
   }]);
 

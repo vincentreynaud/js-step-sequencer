@@ -1,5 +1,5 @@
 class Pads {
-  togglePadPressed(pad) {
+  togglePadPressedClass(pad) {
     pad.classList.contains("pad-pressed")
     ? pad.classList.remove("pad-pressed")
     : pad.classList.add("pad-pressed");

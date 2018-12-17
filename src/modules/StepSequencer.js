@@ -9,7 +9,7 @@ class StepSequencer {
     this.masterVolume = this.audioContext.createGain();
     this.steps = this.createStepTemplate();
     this.pads = new Pads();
-    this.stop = null;
+    this.stop = true;
 
     this.elements = {}
     this.init()
@@ -19,8 +19,8 @@ class StepSequencer {
     this.getElements();
     this.masterVolume.gain.value = 0.25;
     this.masterVolume.connect(this.audioContext.destination);
+    this.updateBPMDisplay(this.elements.sliderBPM.value);
 
-    this.updateBPMDisplay(this.elements.sliderBPM.value)
     this.registerEvents();
   }
 
@@ -28,11 +28,16 @@ class StepSequencer {
     this.elements.controls.addEventListener("click", (e) => {
       // replace by switch statement
       if (e.target.closest("#play")) {
+        if (this.stop === true) {
+          this.toggleStopBtn();
+        }
         this.playSequence(this.timeInput);
       } 
       else if (e.target.closest("#stop")) {
-        // create toogleStopBtn method
-        this.toggleStopBtn();
+        if (this.stop === false) {
+          this.toggleStopBtn();
+        }
+        // find an instant way to stop the sequence player
       } 
       else if (e.target.closest("#delete")) {
         this.clearSelectedPads();
@@ -47,28 +52,33 @@ class StepSequencer {
 
     this.elements.pads.forEach(pad => {
       pad.addEventListener("click", () => {
-        this.pads.togglePadPressed(pad);
+        this.pads.togglePadPressedClass(pad);
       });
     });
 
     // EventListener add sound changing arrayValues
+    // change that
     for (let i = 0; i < 8; i++) {
       for (let j = 0; j < 8; j++) {
         document
           .querySelector("#step-" + (i + 1))
           .children[j].addEventListener("click", () => {
-            this.padToggle(i, j);
+            this.togglePadPlay(i, j);
           });
       }
     }
   }
 
-  playSequence(time) {
-    if (this.stop === true) {
-      this.toggleStopBtn()
-      return;
+  // rename
+  togglePadPlay(row, line) {
+    if (this.steps[row][line]) {
+      this.steps[row][line] = false;
+    } else {
+      this.steps[row][line] = true;
     }
+  };
 
+  playSequence(time) {
     for (let i = 0; i < 8; ++i) {
       let j = i;
       setTimeout(() => {
@@ -102,17 +112,8 @@ class StepSequencer {
   };
 
   toggleStopBtn() {
-    this.stop === true ? this.stop = false : this.stop = true;
+    (this.stop === true) ? (this.stop = false) : (this.stop = true);
   }
-
-  // rename
-  padToggle(row, line) {
-    if (this.steps[row][line]) {
-      this.steps[row][line] = false;
-    } else {
-      this.steps[row][line] = true;
-    }
-  };
 
   setBPM(value) {
     this.timeInput = 480000 / value;
@@ -120,6 +121,21 @@ class StepSequencer {
 
   updateBPMDisplay(value) {
     this.elements.sliderDisplay.innerHTML =`${value} BPM`;
+  }
+
+  createStepTemplate() {
+    let steps = new Array(8);
+    for (let i = 0; i < 8; i++) {
+      steps[i] = [false, false, false, false, false, false, false, false];
+      // default pad value is false, i.e. unpressed
+    }
+
+    return steps;
+  }
+
+  getScale() {
+    const gmin = [ 195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995 ];
+    return gmin
   }
 
   getElements() {
@@ -133,31 +149,6 @@ class StepSequencer {
       instrument: document.querySelector("#instrument"),
       pads: document.querySelectorAll(".pad")
     })
-  }
-
-  createStepTemplate() {
-    let steps = new Array(8);
-    for (let i = 0; i < 8; i++) {
-      steps[i] = new Array(8);
-    }
-
-    return this.addFalseValues(steps);
-  }
-
-  // add boolean value to the steps array
-  addFalseValues(steps) {
-    for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 8; j++) {
-        steps[i][j] = false;
-      }
-    }
-
-    return steps;
-  }
-
-  getScale() {
-    const gmin = [ 195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995 ];
-    return gmin
   }
 }
 
