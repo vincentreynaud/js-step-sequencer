@@ -190,7 +190,6 @@ function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pads__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pads */ "./src/modules/Pads.js");
-/* harmony import */ var _scale__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scale */ "./src/scale.js");
 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -198,7 +197,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 
 
 
@@ -210,7 +208,7 @@ function () {
 
     this.audioContext = new AudioContext();
     this.timeInput = 4000;
-    this.scale = _scale__WEBPACK_IMPORTED_MODULE_1__["default"];
+    this.scale = this.getScale();
     this.masterVolume = this.audioContext.createGain();
     this.steps = this.createStepTemplate();
     this.pads = new _Pads__WEBPACK_IMPORTED_MODULE_0__["default"]();
@@ -362,26 +360,18 @@ function () {
 
       return steps;
     }
+  }, {
+    key: "getScale",
+    value: function getScale() {
+      var gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995];
+      return gmin;
+    }
   }]);
 
   return StepSequencer;
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (StepSequencer);
-
-/***/ }),
-
-/***/ "./src/scale.js":
-/*!**********************!*\
-  !*** ./src/scale.js ***!
-  \**********************/
-/*! exports provided: gmin */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gmin", function() { return gmin; });
-var gmin = [195.995, 220, 233.082, 261.626, 293.665, 311.127, 349.228, 391.995];
 
 /***/ })
 
