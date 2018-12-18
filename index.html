@@ -3,34 +3,31 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Extended Drum Kit: Step Sequencer</title>
+  <title>8x8 Step Sequencer</title>
 
-  <!-- getting symbols for buttons from fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
-
-  <!-- normalize -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
 
-<body onload="init();">
+<body>
 
   <div id="sequencer">
     <div class="sequencer">
-      <div class="buttons">
+      <div id="controls" class="buttons">
         <!-- check class of button play -->
-        <button id="stop" class="navigation-buttons fa fa-stop"></button>
+        <button id="stop" class="navigation-buttons fa fa-stop" disabled></button>
         <button id="play" class="navigation-buttons fa fa-play"></button>
-        <button class="navigation-buttons fa fa-microphone"></button>
-        <button id="trash" class="navigation-buttons fa fa-trash"></button>
+        <button id="record" class="navigation-buttons fa fa-microphone"></button>
+        <button id="delete" class="navigation-buttons fa fa-trash"></button>
 
         <!-- settings, bpm and other stuff -->
         <!-- here comes a bpm slider -->
         <div class="select-wrapper">
           <span>Instrument</span>
-          <select id="instruments" data-label="wave" class="wave navigation-buttons">
+          <select class="wave navigation-buttons" id="instrument-control" data-label="wave">
             <option class="optionColor" value="sine">Synth</option>
             <option value="sawtooth">Sawtooth</option>
             <option value="square">Square</option>
@@ -40,16 +37,16 @@
 
         <div class="select-wrapper">
           <span>Octave</span>
-          <select data-label="octave" class="octave navigation-buttons">
+          <select id="octave-control" data-label="octave" class="octave navigation-buttons">
             <option> 1</option>
             <option>2</option>
-            <option> 3</option>
+            <option>3</option>
           </select>
         </div>
 
         <div class="select-wrapper">
           <span>Style</span>
-          <select data-label="octave" class="BPM navigation-buttons">
+          <select id="style-control" data-label="octave" class="BPM navigation-buttons">
             <option>Legato</option>
             <option>Staccato</option>
           </select>
@@ -59,10 +56,8 @@
 
           <br>
           <div class="input-container">
-
-            <span id="demo"></span>
-
-            <input type="range" min="60" max="200" value="120" class="slider" id="myRange">
+            <span id="bpm-display"></span>
+            <input type="range" min="60" max="200" value="120" class="slider" id="bpm-slider">
           </div>
         </div>
 
@@ -182,12 +177,8 @@
       </div>
     </div>
   </div>
-
-  <!-- JS Script for BPM slider -->
-  <script src="js/sliderBPM.js"></script>
-  <!-- JS Script for changing Classes by pressing -->
-  <script src="js/changeClasses.js"></script>
-  <script src="js/sounds.js"></script>
+  <script src="src/PadBehaviour.js"></script>
+  <script src="src/index.js"></script>
 </body>
 
 </html>
