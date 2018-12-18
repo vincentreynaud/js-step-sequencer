@@ -73,7 +73,11 @@ class StepSequencer {
   }
 
   playSequence(time) {
+    if (this.stop === true) {
+      return;
+    }
     // snippet: if play already running: restart
+
     for (let i = 0; i < 8; ++i) {
       let j = i;
       setTimeout(() => {
