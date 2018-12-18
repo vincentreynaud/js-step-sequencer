@@ -18,7 +18,7 @@
     <div class="sequencer">
       <div id="controls" class="buttons">
         <!-- check class of button play -->
-        <button id="stop" class="navigation-buttons fa fa-stop"></button>
+        <button id="stop" class="navigation-buttons fa fa-stop" disabled></button>
         <button id="play" class="navigation-buttons fa fa-play"></button>
         <button id="record" class="navigation-buttons fa fa-microphone"></button>
         <button id="delete" class="navigation-buttons fa fa-trash"></button>
@@ -27,7 +27,7 @@
         <!-- here comes a bpm slider -->
         <div class="select-wrapper">
           <span>Instrument</span>
-          <select class="wave navigation-buttons" id="instrument" data-label="wave">
+          <select class="wave navigation-buttons" id="instrument-control" data-label="wave">
             <option class="optionColor" value="sine">Synth</option>
             <option value="sawtooth">Sawtooth</option>
             <option value="square">Square</option>
@@ -37,7 +37,7 @@
 
         <div class="select-wrapper">
           <span>Octave</span>
-          <select id="octave" data-label="octave" class="octave navigation-buttons">
+          <select id="octave-control" data-label="octave" class="octave navigation-buttons">
             <option> 1</option>
             <option>2</option>
             <option>3</option>
@@ -46,7 +46,7 @@
 
         <div class="select-wrapper">
           <span>Style</span>
-          <select id="style" data-label="octave" class="BPM navigation-buttons">
+          <select id="style-control" data-label="octave" class="BPM navigation-buttons">
             <option>Legato</option>
             <option>Staccato</option>
           </select>

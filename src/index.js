@@ -28,13 +28,17 @@ class StepSequencer {
       // replace by switch statement
       if (e.target.closest("#play")) {
         if (this.stop === true) {
-          this.toggleStopBtn();
+          this.toggleStop();
+          this.toggleDisabledAttribute(this.elements.play);
+          this.toggleDisabledAttribute(this.elements.stop);
         }
         this.playSequence(this.timeInput);
       }
       else if (e.target.closest("#stop")) {
         if (this.stop === false) {
-          this.toggleStopBtn();
+          this.toggleStop();
+          this.toggleDisabledAttribute(this.elements.stop);
+          this.toggleDisabledAttribute(this.elements.play);
         }
         // find an instant way to stop the sequence player
       }
@@ -68,16 +72,8 @@ class StepSequencer {
     }
   }
 
-  // rename
-  togglePadPlay(row, line) {
-    if (this.steps[row][line]) {
-      this.steps[row][line] = false;
-    } else {
-      this.steps[row][line] = true;
-    }
-  };
-
   playSequence(time) {
+    // snippet: if play already running: restart
     for (let i = 0; i < 8; ++i) {
       let j = i;
       setTimeout(() => {
@@ -110,8 +106,26 @@ class StepSequencer {
     }
   };
 
-  toggleStopBtn() {
+  togglePadPlay(row, line) {
+    if (this.steps[row][line]) {
+      this.steps[row][line] = false;
+    } else {
+      this.steps[row][line] = true;
+    }
+  }
+
+  toggleStop() {
     (this.stop === true) ? (this.stop = false) : (this.stop = true);
+  }
+
+  toggleDisabledAttribute(element) {
+    if (element.hasAttribute("disabled")) {
+      element.removeAttribute("disabled", "disabled")
+      console.log('element enabled', element);
+    } else {
+      element.setAttribute("disabled", "disabled");
+      console.log('element disabled', element);
+    }
   }
 
   setBPM(value) {
@@ -140,13 +154,16 @@ class StepSequencer {
   getElements() {
     Object.assign(this.elements, {
       controls: document.querySelector("#controls"),
+      pads: document.querySelectorAll(".pad"),
       play: document.querySelector("#play"),
       stop: document.querySelector("#stop"),
+      record: document.querySelector("#record"),
       delete: document.querySelector("#delete"),
       sliderBPM: document.querySelector("#bpm-slider"),
       sliderDisplay: document.querySelector("#bpm-display"),
-      instrument: document.querySelector("#instrument"),
-      pads: document.querySelectorAll(".pad")
+      instrument: document.querySelector("#instrument-control"),
+      octave: document.querySelector("#octave-control"),
+      style: document.querySelector("#style-control")
     })
   }
 }
