@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Drum Kit</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
@@ -85,11 +85,13 @@
       audio.play();
       key.classList.add('key-pressed');
     };
+
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return;
       // console.log(e.propertyName);
       this.classList.remove('key-pressed')
     };
+
     const keys = document.querySelectorAll('.key');
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
     window.addEventListener('keydown', playSound);
