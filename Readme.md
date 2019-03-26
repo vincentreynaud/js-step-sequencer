@@ -1,15 +1,23 @@
-# Extended JS Drum Kit
+# Extended JS Step Sequencer
 
-Create a virtual Drum Set using HTML5, JavaScript the Web Audio API.
+Create a virtual Step Sequencer using Vanilla JavaScript & the Web Audio API.
 
-## Possible extended features
+[add screenshot]
+[add link to online app]
 
-- Load different Drum Sets
-- Create a piano Synth Pad
-- Adjust a global BPM & arpeggiate aamples
+## Improvements
+
+- stop sequence immediately
+- adjust scale and note playing
+- refractor HTML/CSS
+- add light theme (CSS)
+
+### Possible extended features
+
+- Reverb effects on sounds
+- Load different Sample Sets
+- Adjust a global BPM & arpeggiate samples
 - Record music session
-- Mouse effects, using JavaScript event tracking
-- Touch effects for mobile devices
 
 ## Resources
 
