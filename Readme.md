@@ -4,7 +4,7 @@ Step Sequencer built with vanilla JavaScript & the Web Audio API. The Step Seque
 
 ## --> [See the Codepen version](https://codepen.io/collectiveanxiety/pen/ZNQrbr)
 
-[!JS Step Sequencer screenshot](screenshot.png)
+![JS Step Sequencer screenshot](screenshot.png)
 
 ## Contributing
 
